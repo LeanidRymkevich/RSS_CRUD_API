@@ -1,0 +1,25 @@
+{
+  "name": "rss_crud_api",
+  "version": "1.0.0",
+  "description": "Implementation of the task of the same name on the RSS Node.js course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeanidRymkevich/RSS_CRUD_API.git"
+  },
+  "keywords": [
+    "node.js",
+    "crud",
+    "rest",
+    "ts"
+  ],
+  "author": "Leanid Rymkevich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeanidRymkevich/RSS_CRUD_API/issues"
+  },
+  "homepage": "https://github.com/LeanidRymkevich/RSS_CRUD_API#readme"
+}
