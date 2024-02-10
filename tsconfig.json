@@ -19,5 +19,4 @@
     "strictPropertyInitialization": false,
     "target": "ES2020",
   },
-  "exclude": ["**/*.test.ts"]
 }
