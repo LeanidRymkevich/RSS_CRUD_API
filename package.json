@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Implementation of the task of the same name on the RSS Node.js course",
   "main": "index.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/LeanidRymkevich/RSS_CRUD_API/issues"
   },
-  "homepage": "https://github.com/LeanidRymkevich/RSS_CRUD_API#readme"
+  "homepage": "https://github.com/LeanidRymkevich/RSS_CRUD_API#readme",
+  "dependencies": {
+    "dotenv": "^16.4.1"
+  }
 }
