@@ -1,5 +1,5 @@
-import IUser from 'src/types/interfaces/IUser';
-import { UserInfo } from 'src/types/types';
+import IUser from '../types/interfaces/IUser';
+import { UserInfo } from '../types/types';
 
 const users: IUser[] = [];
 
