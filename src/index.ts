@@ -1,8 +1,5 @@
 import 'dotenv/config';
-import { multiply } from './folder/multiply';
 
-console.log(process.env.PORT);
+const port: string = process.env.PORT || '3000';
 
-export const sum = (a: number, b: number) => multiply(a, b) + a;
-
-console.log(multiply(2, 4));
+console.log(port);
