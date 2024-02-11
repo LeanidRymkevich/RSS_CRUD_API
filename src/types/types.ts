@@ -14,7 +14,11 @@ type CustomServerCommand = (
 ) => void;
 
 type ICommands = {
-  [key in ERoutes]?: { [key in EMethod]?: CustomServerCommand };
+  [key in ERoutes]: { [key in EMethod]?: CustomServerCommand };
 };
 
-export { UserInfo, CustomServerCommand, ICommands };
+type IRoutePattern = {
+  [key in ERoutes]: RegExp;
+};
+
+export { UserInfo, CustomServerCommand, ICommands, IRoutePattern };

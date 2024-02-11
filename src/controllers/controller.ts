@@ -1,4 +1,4 @@
-import { ICommands } from '../types/types';
+import { CustomServerCommand, ICommands } from '../types/types';
 import ERoutes from '../types/enums/ERoutes';
 import EMethod from '../types/enums/EMethod';
 
@@ -8,6 +8,7 @@ import {
   updateUserCommand,
   deleteUserCommand,
 } from './userController';
+import routePatterns from './routePatterns';
 
 const commands: ICommands = {
   [ERoutes.USERS]: {
@@ -21,4 +22,27 @@ const commands: ICommands = {
   },
 };
 
-export default commands;
+const execute: CustomServerCommand = (req, res) => {
+  const url: string = req.url!; // check later
+
+  const matchPath: string | undefined = Object.keys(commands).find(
+    (key: string): boolean => routePatterns[key as unknown as ERoutes].test(url)
+  );
+
+  if (!matchPath) {
+    console.log('no such path');
+    return;
+  }
+
+  const command: CustomServerCommand | undefined =
+    commands[matchPath as unknown as ERoutes][req.method! as EMethod];
+
+  if (!command) {
+    console.log('no method for this route');
+    return;
+  } else {
+    command(req, res);
+  }
+};
+
+export default execute;

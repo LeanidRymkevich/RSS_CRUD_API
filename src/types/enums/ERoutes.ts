@@ -1,6 +1,6 @@
 enum ERoutes {
-  USERS = 'api/users',
-  USER = 'api/users/id',
+  USERS,
+  USER,
 }
 
 export default ERoutes;
