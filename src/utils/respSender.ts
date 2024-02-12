@@ -19,7 +19,7 @@ const sendResponse = (
   res.end(JSON.stringify(body));
 };
 
-const sentError = (
+const sendError = (
   res: ServerResponse<IncomingMessage> & {
     req: IncomingMessage;
   },
@@ -39,4 +39,4 @@ const sentError = (
   res.end(JSON.stringify({ message: msg }));
 };
 
-export { sendResponse, sentError };
+export { sendResponse, sendError };

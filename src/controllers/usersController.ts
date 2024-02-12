@@ -1,14 +1,22 @@
 import { CustomServerCommand } from '../types/types';
 
 import { addUser, getUsers } from '../data/customDB';
-import createUser from '../models/userModel';
+import { sendResponse } from '../utils/respSender';
+import EStatusCodes from '../types/enums/EStatusCodes';
+import readReqBody from '../utils/reqBodyReader';
+import IUser from '../types/interfaces/IUser';
+import { validateCreateUserData } from 'src/utils/validator';
 
-const getUsersCommand: CustomServerCommand = (_req, res) => {
-  res.end(JSON.stringify(getUsers()));
+const getUsersCommand: CustomServerCommand = async (_req, res) => {
+  sendResponse(res, EStatusCodes.OK, getUsers());
 };
 
-const createUserCommand: CustomServerCommand = (_req, res) => {
-  res.end(JSON.stringify(addUser(createUser('Ivan', 10, []))));
+const createUserCommand: CustomServerCommand = async (req, res) => {
+  const data: unknown = await readReqBody(req);
+  const newUser: IUser = validateCreateUserData(data);
+
+  addUser(newUser);
+  sendResponse(res, EStatusCodes.OK, newUser);
 };
 
 export { getUsersCommand, createUserCommand };

@@ -1,17 +1,12 @@
 import { v4 as uuid } from 'uuid';
 
 import IUser from '../types/interfaces/IUser';
+import { UserInfo } from '../types/types';
 
-const createUser = (
-  username: string,
-  age: number,
-  hobbies: string[]
-): IUser => {
+const createUser = (info: UserInfo): IUser => {
   return {
     id: uuid(),
-    username,
-    age,
-    hobbies,
+    ...info,
   };
 };
 
