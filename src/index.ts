@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import createCustomServer from './models/customServer';
+import createCustomServer from './models/serverModel';
 
 const port: string = process.env.PORT || '3000';
 

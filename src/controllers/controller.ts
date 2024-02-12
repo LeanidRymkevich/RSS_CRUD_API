@@ -39,7 +39,6 @@ const execute: CustomServerCommand = (req, res) => {
 
   if (!command) {
     console.log('no method for this route');
-    return;
   } else {
     command(req, res);
   }
