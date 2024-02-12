@@ -1,7 +1,7 @@
 import { IncomingMessage, Server, ServerResponse, createServer } from 'http';
 
 import execute from '../controllers/controller';
-import { sendError } from '../utils/respSender';
+import { sendError } from '../utils/respUtils';
 
 const createCustomServer = (): Server<
   typeof IncomingMessage,

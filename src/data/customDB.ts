@@ -1,7 +1,7 @@
 import IUser from '../types/interfaces/IUser';
 import { UserInfo } from '../types/types';
 
-const users: IUser[] = [];
+let users: IUser[] = [];
 
 const getUsers = (): IUser[] => users;
 
@@ -23,4 +23,17 @@ const updateUser = (id: string, info: UserInfo): IUser | null => {
   return users[userIdx] || null;
 };
 
-export { getUsers, getUser, addUser, updateUser };
+const deleteUser = (id: string): IUser | null => {
+  const userIdx: number = users.findIndex(
+    (user: IUser): boolean => user.id === id
+  );
+  const user: IUser | undefined = users[userIdx];
+
+  if (userIdx === -1 || !user) return null;
+
+  users = users.splice(userIdx, 1);
+
+  return user;
+};
+
+export { getUsers, getUser, addUser, updateUser, deleteUser };

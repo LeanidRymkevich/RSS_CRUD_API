@@ -11,7 +11,7 @@ type CustomServerCommand = (
   res: ServerResponse<IncomingMessage> & {
     req: IncomingMessage;
   }
-) => Promise<void>;
+) => Promise<void> | void;
 
 type ICommands = {
   [key in ERoutes]: { [key in EMethod]?: CustomServerCommand };
