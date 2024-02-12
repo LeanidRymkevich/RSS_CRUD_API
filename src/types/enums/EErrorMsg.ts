@@ -6,6 +6,7 @@ enum EErrorMsg {
   MISSING_DATA_FOR_USER_CREATING = 'Request body lacks data for a user creating or fields values have invalid type',
   INVALID_ID = 'Invalid user id',
   USER_NOT_EXISTS = 'User with provided id does not exist',
+  INVALID_JSON_BODY = 'Invalid JSON body',
 }
 
 export default EErrorMsg;

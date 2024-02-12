@@ -19,8 +19,10 @@ const readReqBody = (req: IncomingMessage): Promise<unknown> => {
 
       try {
         resolve(JSON.parse(res));
-      } catch (err) {
-        reject(err);
+      } catch {
+        reject(
+          new CustomError(EErrorMsg.INVALID_JSON_BODY, EStatusCodes.BAD_REQUEST)
+        );
       }
     });
 
