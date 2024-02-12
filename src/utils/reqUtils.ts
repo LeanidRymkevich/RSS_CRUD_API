@@ -7,17 +7,26 @@ const readReqBody = (req: IncomingMessage): Promise<unknown> => {
   return new Promise((resolve, reject) => {
     let res = '';
 
-    try {
-      req.on('data', (chunk: unknown): void => {
-        res += String(chunk);
-      });
+    req.on('data', (chunk: unknown): void => {
+      res += String(chunk);
+    });
 
-      req.on('end', (): void => {
+    req.on('end', (): void => {
+      if (res === '') {
+        resolve('');
+        return;
+      }
+
+      try {
         resolve(JSON.parse(res));
-      });
-    } catch (err) {
+      } catch (err) {
+        reject(err);
+      }
+    });
+
+    req.on('error', (err: Error): void => {
       reject(err);
-    }
+    });
   });
 };
 
