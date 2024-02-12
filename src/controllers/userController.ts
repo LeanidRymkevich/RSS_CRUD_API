@@ -9,6 +9,8 @@ import { deleteUser, getUser, updateUser } from '../data/customDB';
 import { getID, readReqBody } from '../utils/reqUtils';
 import { sendResponse } from '../utils/respUtils';
 
+const SUCCESSFUL_DEL_MSG = 'User was deleted successfully';
+
 const getUserCommand: CustomServerCommand = (req, res) => {
   const id: string = getID(req);
   const user: IUser | null = getUser(validateID(id));
@@ -41,7 +43,7 @@ const deleteUserCommand: CustomServerCommand = (req, res) => {
   if (!user)
     throw new CustomError(EErrorMsg.USER_NOT_EXISTS, EStatusCodes.NOT_FOUND);
 
-  sendResponse(res, EStatusCodes.NO_CONTENT, {});
+  sendResponse(res, EStatusCodes.NO_CONTENT, { message: SUCCESSFUL_DEL_MSG });
 };
 
 export { getUserCommand, updateUserCommand, deleteUserCommand };

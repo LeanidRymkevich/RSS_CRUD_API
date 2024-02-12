@@ -24,16 +24,15 @@ const updateUser = (id: string, info: UserInfo): IUser | null => {
 };
 
 const deleteUser = (id: string): IUser | null => {
-  const userIdx: number = users.findIndex(
-    (user: IUser): boolean => user.id === id
-  );
-  const user: IUser | undefined = users[userIdx];
+  let userToDelete: IUser | null = null;
 
-  if (userIdx === -1 || !user) return null;
+  users = users.filter((user: IUser): boolean => {
+    if (user.id !== id) return true;
+    userToDelete = user;
+    return false;
+  });
 
-  users = users.splice(userIdx, 1);
-
-  return user;
+  return userToDelete;
 };
 
 export { getUsers, getUser, addUser, updateUser, deleteUser };
