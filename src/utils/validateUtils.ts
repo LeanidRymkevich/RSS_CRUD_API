@@ -17,7 +17,9 @@ const validateCreateUserData = (data: unknown): UserInfo => {
 
   if (
     !info.age ||
+    typeof info.age! !== 'number' ||
     !info.username ||
+    typeof info.username !== 'string' ||
     !info.hobbies ||
     !Array.isArray(info.hobbies)
   )
